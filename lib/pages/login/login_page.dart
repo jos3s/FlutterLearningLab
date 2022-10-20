@@ -1,5 +1,5 @@
-import 'package:teste/widgets/custom_Edit.dart';
-import 'package:teste/widgets/custom_logo.dart';
+import 'package:Lembretes_Flutterama/widgets/custom_Edit.dart';
+import 'package:Lembretes_Flutterama/widgets/custom_logo.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
