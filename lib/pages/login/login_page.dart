@@ -16,7 +16,24 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   bool buttonClick = false;
 
-  void _login() {}
+  void _login() {
+    if (buttonClick) return;
+
+    setState(() {
+      buttonClick = true;
+    });
+
+    Future.delayed(
+      const Duration(seconds: 2),
+      () {
+        if (_formKey.currentState!.validate()) {}
+
+        setState(() {
+          buttonClick = false;
+        });
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +51,9 @@ class _LoginPageState extends State<LoginPage> {
                   hintText: "Informe o email",
                   icon: Icons.person,
                   validator: (value) {
-                    if (value == null || value.trim() == "") {
+                    if (value == null ||
+                        value.trim() == "" ||
+                        value.indexOf("@") < -1) {
                       return "Informe o email";
                     }
                     return null;
