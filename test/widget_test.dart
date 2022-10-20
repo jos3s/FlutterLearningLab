@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:teste/app_widget.dart';
+import 'package:Lembretes_Flutterama/app_widget.dart';
 
 
 void main() {
