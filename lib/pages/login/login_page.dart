@@ -1,5 +1,6 @@
 import 'package:Lembretes_Flutterama/db/database.dart';
 import 'package:Lembretes_Flutterama/models/user.dart';
+import 'package:Lembretes_Flutterama/routes.dart';
 import 'package:Lembretes_Flutterama/widgets/custom_Edit.dart';
 import 'package:Lembretes_Flutterama/widgets/custom_button.dart';
 import 'package:Lembretes_Flutterama/widgets/custom_logo.dart';
@@ -45,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
           ));
         } else {
           Database().usuarioLogado = usuario;
-
+          Navigator.of(context).pushReplacementNamed(Routes.HOME);
         }
         setState(() {
           buttonClick = false;
