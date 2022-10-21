@@ -1,3 +1,5 @@
+import 'package:Lembretes_Flutterama/pages/home/home_page.dart';
+
 import './pages/splash/splash_page.dart';
 import './pages/login/login_page.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +19,7 @@ class AppWidget extends StatelessWidget {
       routes: {
         Routes.INITIAL: ((context) => const SplashPage()),
         Routes.LOGIN: ((context) => const LoginPage()),
+        Routes.HOME: ((context) => const HomePage()),
       },
       initialRoute: Routes.INITIAL,
     );
