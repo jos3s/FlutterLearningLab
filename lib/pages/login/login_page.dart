@@ -1,3 +1,5 @@
+import 'package:Lembretes_Flutterama/db/database.dart';
+import 'package:Lembretes_Flutterama/models/user.dart';
 import 'package:Lembretes_Flutterama/widgets/custom_Edit.dart';
 import 'package:Lembretes_Flutterama/widgets/custom_button.dart';
 import 'package:Lembretes_Flutterama/widgets/custom_logo.dart';
@@ -23,11 +25,28 @@ class _LoginPageState extends State<LoginPage> {
       buttonClick = true;
     });
 
+    if (_formKey.currentState!.validate()) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Validando dados"),
+      ));
+    }
+
     Future.delayed(
       const Duration(seconds: 2),
       () {
-        if (_formKey.currentState!.validate()) {}
+        User? usuario =
+            Database().login(textUsuario.text.trim(), textSenha.text.trim());
 
+        if (usuario == null) {
+          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text("Usuario nao encontrado"),
+            backgroundColor: Colors.red,
+          ));
+        } else {
+          Database().usuarioLogado = usuario;
+
+        }
         setState(() {
           buttonClick = false;
         });
@@ -43,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Form(
             key: _formKey,
-            child: Column(
+            child: ListView(
               children: [
                 const CustomLogo(),
                 CustomEdit(
